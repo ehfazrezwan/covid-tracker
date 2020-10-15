@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { MenuItem, FormControl, Select } from "@material-ui/core";
+
+import Infobox from "./Infobox";
+
 import "./App.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState("worldwide");
 
   useEffect(() => {
     const getCountriesData = async () => {
@@ -22,6 +26,11 @@ function App() {
     getCountriesData();
   }, []);
 
+  const onCountryChange = (event) => {
+    const countryCode = event.target.value;
+    setCountry(countryCode);
+  };
+
   return (
     <div className="app">
       {/* Header */}
@@ -29,7 +38,7 @@ function App() {
         {/* Title ++ Dropdown selector */}
         <h1>COVID-19 TRACKER</h1>
         <FormControl className="app__dropdown">
-          <Select variant="outlined" value="worldwide">
+          <Select variant="outlined" value={country} onChange={onCountryChange}>
             <MenuItem value="worldwide" key="worldwide">
               Worldwide
             </MenuItem>
@@ -42,9 +51,12 @@ function App() {
           </Select>
         </FormControl>
       </div>
-      {/* Infobox */}
-      {/* Infobox */}
-      {/* Infobox */}
+
+      <div className="app__stats">
+        <Infobox title="Coronavirus Cases" total={2000} cases={123}></Infobox>
+        <Infobox title="Recovered" total={3000} cases={124}></Infobox>
+        <Infobox title="Deaths" total={4000} cases={125}></Infobox>
+      </div>
 
       {/* Table */}
       {/* Graph */}

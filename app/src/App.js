@@ -8,9 +8,18 @@ function App() {
   useEffect(() => {
     const getCountriesData = async () => {
       await fetch("https://disease.sh/v3/covid-19/countries").then((res) => {
-        res.json().then((data) => {});
+        res.json().then((data) => {
+          const countriesArr = data.map((country) => ({
+            name: country.country,
+            value: country.countryInfo.iso2,
+          }));
+
+          setCountries(countriesArr);
+        });
       });
     };
+
+    getCountriesData();
   }, []);
 
   return (
@@ -20,11 +29,15 @@ function App() {
         {/* Title ++ Dropdown selector */}
         <h1>COVID-19 TRACKER</h1>
         <FormControl className="app__dropdown">
-          <Select variant="outlined" value="abc">
-            <MenuItem value="worldwide">Worldwide</MenuItem>
+          <Select variant="outlined" value="worldwide">
+            <MenuItem value="worldwide" key="worldwide">
+              Worldwide
+            </MenuItem>
             {/* Loop through all the countries and show dropdown of all countries  */}
             {countries.map((country) => (
-              <MenuItem value={country}>{country}</MenuItem>
+              <MenuItem value={country.value} key={country.value}>
+                {country.name}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>

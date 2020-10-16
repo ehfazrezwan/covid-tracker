@@ -6,12 +6,14 @@ import {
   Card,
   CardContent,
 } from "@material-ui/core";
+import { sortData } from "./util";
 
 import Infobox from "./Infobox";
 import Map from "./Map";
 import Table from "./Table";
 
 import "./App.css";
+import "./Table.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -36,7 +38,9 @@ function App() {
             value: country.countryInfo.iso2,
           }));
 
-          setTableData(data);
+          const sortedData = sortData(data);
+
+          setTableData(sortedData);
           setCountries(countriesArr);
         });
       });

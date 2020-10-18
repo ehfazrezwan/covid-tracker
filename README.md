@@ -41,7 +41,7 @@
     <a href="https://github.com/ehfazrezwan/covid-tracker"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://covid-tracker-38cce.web.app/" target = "_blank">View Demo</a>
+    <a href="https://covid19-tracker-sninja.web.app/" target = "_blank">View Demo</a>
     ·
     <a href="https://github.com/ehfazrezwan/covid-tracker/issues">Report Bug</a>
     ·

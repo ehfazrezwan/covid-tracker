@@ -41,6 +41,9 @@ body {
   .app {
     flex-direction: column;
   }
+  .app__right {
+    margin-top: 20px;
+  }
 }
 
 .app__right .MuiCardContent-root {

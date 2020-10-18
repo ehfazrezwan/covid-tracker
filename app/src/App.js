@@ -6,7 +6,7 @@ import {
   Card,
   CardContent,
 } from "@material-ui/core";
-import { sortData, prettyPrintStat, prettyPrintComm } from "./util";
+import { sortData, prettyPrintStat } from "./util";
 
 import Infobox from "./Infobox";
 import Map from "./Map";
@@ -107,15 +107,15 @@ function App() {
             isRed
             active={casesType === "cases"}
             onClick={(e) => setCasesType("cases")}
-            title="Coronavirus Cases"
-            total={prettyPrintComm(countryInfo.cases)}
+            title="Cases"
+            total={prettyPrintStat(countryInfo.cases)}
             cases={prettyPrintStat(countryInfo.todayCases)}
           ></Infobox>
           <Infobox
             active={casesType === "recovered"}
             onClick={(e) => setCasesType("recovered")}
             title="Recovered"
-            total={prettyPrintComm(countryInfo.recovered)}
+            total={prettyPrintStat(countryInfo.recovered)}
             cases={prettyPrintStat(countryInfo.todayRecovered)}
           ></Infobox>
           <Infobox
@@ -123,7 +123,7 @@ function App() {
             active={casesType === "deaths"}
             onClick={(e) => setCasesType("deaths")}
             title="Deaths"
-            total={prettyPrintComm(countryInfo.deaths)}
+            total={prettyPrintStat(countryInfo.deaths)}
             cases={prettyPrintStat(countryInfo.todayDeaths)}
           ></Infobox>
         </div>

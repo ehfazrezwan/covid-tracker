@@ -102,30 +102,38 @@ function App() {
 
         <div className="app__stats">
           <Infobox
+            onClick={(e) => setCasesType("cases")}
             title="Coronavirus Cases"
             total={prettyPrintComm(countryInfo.cases)}
             cases={prettyPrintStat(countryInfo.todayCases)}
           ></Infobox>
           <Infobox
+            onClick={(e) => setCasesType("recovered")}
             title="Recovered"
             total={prettyPrintComm(countryInfo.recovered)}
             cases={prettyPrintStat(countryInfo.todayRecovered)}
           ></Infobox>
           <Infobox
+            onClick={(e) => setCasesType("deaths")}
             title="Deaths"
             total={prettyPrintComm(countryInfo.deaths)}
             cases={prettyPrintStat(countryInfo.todayDeaths)}
           ></Infobox>
         </div>
 
-        <Map center={mapCenter} zoom={mapZoom} countries={mapCountries} />
+        <Map
+          center={mapCenter}
+          zoom={mapZoom}
+          countries={mapCountries}
+          casesType={casesType}
+        />
       </div>
       <Card className="app__right">
         <CardContent>
           <h3>Live cases by country</h3>
-          <Table countries={tableData} />
+          <Table countries={tableData} casesType={casesType} />
           <h3>Worldwide new cases</h3>
-          <LineGraph />
+          <LineGraph casesType={casesType} />
         </CardContent>
       </Card>
     </div>

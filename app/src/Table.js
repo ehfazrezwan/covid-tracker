@@ -1,5 +1,7 @@
 import React from "react";
 
+import { prettyPrintComm } from "./util";
+
 function Table({ countries }) {
   return (
     <div className="table">
@@ -7,7 +9,7 @@ function Table({ countries }) {
         <tr>
           <td>{country}</td>
           <td>
-            <strong>{cases}</strong>
+            <strong>{prettyPrintComm(cases)}</strong>
           </td>
         </tr>
       ))}

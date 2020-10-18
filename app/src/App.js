@@ -6,7 +6,7 @@ import {
   Card,
   CardContent,
 } from "@material-ui/core";
-import { sortData } from "./util";
+import { sortData, prettyPrintStat, prettyPrintComm } from "./util";
 
 import Infobox from "./Infobox";
 import Map from "./Map";
@@ -25,6 +25,7 @@ function App() {
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
   const [mapZoom, setMapZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
+  const [casesType, setCasesType] = useState("cases");
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all").then((response) =>
@@ -102,18 +103,18 @@ function App() {
         <div className="app__stats">
           <Infobox
             title="Coronavirus Cases"
-            total={countryInfo.cases}
-            cases={countryInfo.todayCases}
+            total={prettyPrintComm(countryInfo.cases)}
+            cases={prettyPrintStat(countryInfo.todayCases)}
           ></Infobox>
           <Infobox
             title="Recovered"
-            total={countryInfo.recovered}
-            cases={countryInfo.todayRecovered}
+            total={prettyPrintComm(countryInfo.recovered)}
+            cases={prettyPrintStat(countryInfo.todayRecovered)}
           ></Infobox>
           <Infobox
             title="Deaths"
-            total={countryInfo.deaths}
-            cases={countryInfo.todayDeaths}
+            total={prettyPrintComm(countryInfo.deaths)}
+            cases={prettyPrintStat(countryInfo.todayDeaths)}
           ></Infobox>
         </div>
 
